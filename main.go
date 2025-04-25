@@ -54,7 +54,7 @@ func main() {
 	// Directory you want to serve
 
 	// Serve the files at root path "/"
-	http.Handle("/blogposts", serveHTML("blogposts.html"))
+	http.Handle("/blogposts", serveHTML("wip.html"))
 	http.Handle("/dotfiles", serveHTML("dotfiles.html"))
 	http.Handle("/projects", serveHTML("projects.html"))
 	http.HandleFunc("/submit", submitEmailHandler)
