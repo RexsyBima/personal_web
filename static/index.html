@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Catppuccin Mocha palette
+                        'ctp-base': '#1e1e2e',
+                        'ctp-mantle': '#181825',
+                        'ctp-crust': '#11111b',
+                        'ctp-text': '#cdd6f4',
+                        'ctp-subtext1': '#bac2de',
+                        'ctp-subtext0': '#a6adc8',
+                        'ctp-overlay2': '#9399b2',
+                        'ctp-overlay1': '#7f849c',
+                        'ctp-overlay0': '#6c7086',
+                        'ctp-surface2': '#585b70',
+                        'ctp-surface1': '#45475a',
+                        'ctp-surface0': '#313244',
+                        'ctp-blue': '#89b4fa',
+                        'ctp-lavender': '#b4befe',
+                        'ctp-sapphire': '#74c7ec',
+                        'ctp-sky': '#89dceb',
+                        'ctp-teal': '#94e2d5',
+                        'ctp-green': '#a6e3a1',
+                        'ctp-yellow': '#f9e2af',
+                        'ctp-peach': '#fab387',
+                        'ctp-maroon': '#eba0ac',
+                        'ctp-red': '#f38ba8',
+                        'ctp-mauve': '#cba6f7',
+                        'ctp-pink': '#f5c2e7',
+                        'ctp-flamingo': '#f2cdcd',
+                        'ctp-rosewater': '#f5e0dc',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1e1e2e;
+            color: #cdd6f4;
+            scroll-behavior: smooth;
+        }
+        
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #89b4fa, #cba6f7, #f5c2e7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-glass {
+            background: rgba(30, 30, 46, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(76, 79, 105, 0.3);
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #b4befe;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid #89b4fa;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #89b4fa }
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #1e1e2e, #181825);
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(203, 166, 247, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-ctp-base text-ctp-text">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-ctp-mantle/90 backdrop-blur-md border-b border-ctp-surface0">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold gradient-text">Rexsy</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="/projects" class="nav-link">Projects</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="/blogposts" class="nav-link">Blogposts</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="/dotfiles" class="nav-link">.dotfiles</a>
+                </div>
+                <button class="md:hidden text-ctp-blue focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-ctp-mantle/95 z-40 flex flex-col items-center justify-center space-y-8">
+        <button class="absolute top-6 right-6 text-ctp-blue focus:outline-none">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+        <a href="#about" class="text-2xl nav-link">About</a>
+        <a href="/projects" class="text-2xl nav-link">Projects</a>
+        <a href="#skills" class="text-2xl nav-link">Skills</a>
+	<a href="/blogposts" class="text-2xl nav-link">Blogposts</a>
+        <a href="#contact" class="text-2xl nav-link">Contact</a>
+        <a href="/dotfiles" class="text-2xl nav-link">.dotfiles</a>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-ctp-blue mono mb-4">Hi, I am</p>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Rexsy Bima Trima Wahyu</h1>
+            <h2 class="text-3xl md:text-5xl font-semibold mb-8 text-ctp-subtext1">I build <span class="typewriter gradient-text">digital experiences</span></h2>
+            <p class="max-w-2xl mx-auto text-lg text-ctp-subtext0 mb-10">
+                I'm a backend developer specializing in building exceptional digital experiences. Currently focused on creating accessible, human-centered products.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#projects" class="px-8 py-3 bg-ctp-blue text-ctp-crust rounded-full font-medium hover:bg-ctp-sapphire transition-colors">
+                    View My Work
+                </a>
+                <a href="#contact" class="px-8 py-3 border border-ctp-blue text-ctp-blue rounded-full font-medium hover:bg-ctp-surface0 transition-colors">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-ctp-mantle">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-16 text-center relative">
+                <span class="text-ctp-blue mono mr-2">01.</span>
+                About Me
+                <span class="absolute left-1/4 w-1/2 h-px bg-ctp-surface0 top-1/2 my-10 transform -translate-y-1/2"></span>
+            </h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/3 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-2 rounded-xl bg-gradient-to-r from-ctp-blue to-ctp-mauve opacity-75 blur group-hover:opacity-100 transition duration-200"></div>
+                        <div class="relative rounded-xl overflow-hidden border-2 border-ctp-surface0">
+                            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Profile" 
+                                 class="w-full h-auto max-w-xs">
+                        </div>
+                    </div>
+                </div>
+		<!-- todo-> change to my personal image -->
+                
+                <div class="lg:w-2/3">
+                    <p class="text-ctp-subtext1 mb-6">
+                        Hello! I'm Rexsy, a passionate backend developer based in Indonesia. I enjoy creating things that live on the internet, whether that be websites, applications, or anything in between.
+                    </p>
+                    <p class="text-ctp-subtext1 mb-6">
+                        My journey in tech started back in 2021 when I decided to try learn Python, now i currently mastered Python, Go, and Rust for daily backend development</p>
+                    <p class="text-ctp-subtext1 mb-8">for development tools, i mostly used combination of Tmux, Neovim, and lots of Fuzzy Finder functionality inside WSL from Windows to get the job done</p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <span class="px-4 py-2 bg-ctp-surface0 rounded-full text-ctp-text mono">Python</span>
+                        <span class="px-4 py-2 bg-ctp-surface0 rounded-full text-ctp-text mono">Go</span>
+                        <span class="px-4 py-2 bg-ctp-surface0 rounded-full text-ctp-text mono">Rust</span>
+                        <span class="px-4 py-2 bg-ctp-surface0 rounded-full text-ctp-text mono">Lua</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-16 text-center relative">
+                <span class="text-ctp-blue mono mr-2">02.</span>
+                Some Things I've Built
+                <span class="absolute left-1/4 w-1/2 h-px bg-ctp-surface0 top-1/2 my-10 transform -translate-y-1/2"></span>
+            </h2>
+            
+            <div class="space-y-16">
+                <!-- Project 1 -->
+                <div class="flex flex-col lg:flex-row items-center gap-8 hover-scale">
+                    <div class="lg:w-7/12 relative">
+                        <a href="#" class="block overflow-hidden rounded-lg border border-ctp-surface0">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Project 1" 
+                                 class="w-full h-auto transition-transform duration-500 hover:scale-105">
+                        </a>
+                    </div>
+                    <div class="lg:w-5/12 lg:absolute lg:right-0">
+                        <div class="card-glass p-8 rounded-lg">
+                            <p class="text-ctp-blue mono mb-2">Featured Project</p>
+                            <h3 class="text-2xl font-bold mb-4">E-commerce Platform</h3>
+                            <p class="text-ctp-subtext1 mb-6">
+                                A modern e-commerce platform with real-time inventory management, payment processing, and analytics dashboard. Built with React, Node.js, and MongoDB.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mono text-sm mb-6 text-ctp-overlay1">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>MongoDB</span>
+                                <span>Stripe API</span>
+                            </div>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/RexsyBima" class="text-ctp-blue hover:text-ctp-sapphire">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="#" class="text-ctp-blue hover:text-ctp-sapphire">
+                                    <i class="fa-brands fa-youtube text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-8 hover-scale">
+                    <div class="lg:w-7/12 relative">
+                        <a href="#" class="block overflow-hidden rounded-lg border border-ctp-surface0">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Project 2" 
+                                 class="w-full h-auto transition-transform duration-500 hover:scale-105">
+                        </a>
+                    </div>
+                    <div class="lg:w-5/12 lg:absolute lg:left-0">
+                        <div class="card-glass p-8 rounded-lg text-right">
+                            <p class="text-ctp-blue mono mb-2">Featured Project</p>
+                            <h3 class="text-2xl font-bold mb-4">Task Management App</h3>
+                            <p class="text-ctp-subtext1 mb-6">
+                                A collaborative task management application with real-time updates, drag-and-drop functionality, and team workspaces. Built with Vue.js and Firebase.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mono text-sm mb-6 text-ctp-overlay1 justify-end">
+                                <span>Vue.js</span>
+                                <span>Firebase</span>
+                                <span>Tailwind CSS</span>
+                                <span>WebSockets</span>
+                            </div>
+                            <div class="flex space-x-4 justify-end">
+                                <a href="#" class="text-ctp-blue hover:text-ctp-sapphire">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="#" class="text-ctp-blue hover:text-ctp-sapphire">
+                                    <i class="fas fa-external-link-alt text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="flex flex-col lg:flex-row items-center gap-8 hover-scale">
+                    <div class="lg:w-7/12 relative">
+                        <a href="#" class="block overflow-hidden rounded-lg border border-ctp-surface0">
+                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Project 3" 
+                                 class="w-full h-auto transition-transform duration-500 hover:scale-105">
+                        </a>
+                    </div>
+                    <div class="lg:w-5/12 lg:absolute lg:right-0">
+                        <div class="card-glass p-8 rounded-lg">
+                            <p class="text-ctp-blue mono mb-2">Featured Project</p>
+                            <h3 class="text-2xl font-bold mb-4">foo bar project name here</h3>
+                            <p class="text-ctp-subtext1 mb-6">
+                                An AI-powered content generation tool that helps marketers create high-quality content quickly. Uses GPT-3.5 and custom fine-tuned models.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mono text-sm mb-6 text-ctp-overlay1">
+                                <span>Python</span>
+                                <span>FastAPI</span>
+                                <span>OpenAI API</span>
+                                <span>Next.js</span>
+                            </div>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-ctp-blue hover:text-ctp-sapphire">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="#" class="text-ctp-blue hover:text-ctp-sapphire">
+                                    <i class="fas fa-external-link-alt text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-ctp-blue text-ctp-blue rounded-full hover:bg-ctp-surface0 transition-colors">
+                    View More Projects
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 bg-ctp-mantle">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-16 text-center relative">
+                <span class="text-ctp-blue mono mr-2">03.</span>
+                My Skills
+                <span class="absolute left-1/4 w-1/2 h-px bg-ctp-surface0 top-1/2 my-10 transform -translate-y-1/2"></span>
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Skill 1 -->
+                <div class="project-card p-6 rounded-xl border border-ctp-surface0 hover:border-ctp-blue">
+                    <div class="text-ctp-blue text-4xl mb-4">
+                        <i class="fab fa-golang"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Go</h3>
+                    <p class="text-ctp-subtext1 text-sm">
+							net/http, gin-gonic, gorilla/mux, go-orm
+                    </p>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="project-card p-6 rounded-xl border border-ctp-surface0 hover:border-ctp-blue">
+                    <div class="text-ctp-blue text-4xl mb-4">
+                        <i class="fab fa-rust"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Rust</h3>
+                    <p class="text-ctp-subtext1 text-sm">
+                        Hooks, Context API, Redux, Next.js, performance optimization
+                    </p>
+                </div>
+                
+                <!-- Skill 4 -->
+                <div class="project-card p-6 rounded-xl border border-ctp-surface0 hover:border-ctp-blue">
+                    <div class="text-ctp-blue text-4xl mb-4">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Databases</h3>
+                    <p class="text-ctp-subtext1 text-sm">
+                        MongoDB, PostgreSQL, Firebase, ORMs, query optimization
+                    </p>
+                </div>
+                
+                <!-- Skill 5 -->
+                <div class="project-card p-6 rounded-xl border border-ctp-surface0 hover:border-ctp-blue">
+                    <div class="text-ctp-blue text-4xl mb-4">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Python</h3>
+                    <p class="text-ctp-subtext1 text-sm">
+                        Django, Flask, FastAPI, Selenium, Scrapy, BeautifulSoup4
+                    </p>
+                </div>
+                
+			<!--              <!-- Skill 6 --> 
+			<!--              <div class="project-card p-6 rounded-xl border border-ctp-surface0 hover:border-ctp-blue"> -->
+			<!--                  <div class="text-ctp-blue text-4xl mb-4"> -->
+			<!-- <img src="../static/lua.svg" class="icon" alt="icon"> -->
+			<!--                  </div> -->
+			<!--                  <h3 class="text-xl font-bold mb-2">Lua</h3> -->
+			<!--                  <p class="text-ctp-subtext1 text-sm"> -->
+			<!--                      Mostly used for customizing Neovim configuration -->
+			<!--                  </p> -->
+			<!--              </div> -->
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4 relative">
+                <span class="text-ctp-blue mono mr-2">04.</span>
+                Get In Touch
+                <span class="absolute left-1/4 w-1/2 h-px bg-ctp-surface0 top-1/2 my-5 transform -translate-y-1/2"></span>
+            </h2>
+            <p class="text-xl text-ctp-subtext1 mb-12 max-w-2xl mx-auto">
+                I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll do my best to get back to you!
+            </p>
+            
+            <form class="space-y-6 text-left" hx-post="/submit" hx-trigger="submit" hx-swap="outerHTML" hx-target="#submit-btn">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-ctp-subtext1 mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-ctp-surface0 border border-ctp-surface1 rounded-lg focus:outline-none focus:ring-2 focus:ring-ctp-blue focus:border-transparent" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-ctp-subtext1 mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-ctp-surface0 border border-ctp-surface1 rounded-lg focus:outline-none focus:ring-2 focus:ring-ctp-blue focus:border-transparent" placeholder="your@email.com">
+                    </div>
+                </div>
+                <div>
+                    <label for="subject" class="block text-ctp-subtext1 mb-2">Subject</label>
+                    <input type="text" id="subject" name="subject" class="w-full px-4 py-3 bg-ctp-surface0 border border-ctp-surface1 rounded-lg focus:outline-none focus:ring-2 focus:ring-ctp-blue focus:border-transparent" placeholder="What's this about?">
+                </div>
+                <div>
+                    <label for="message" class="block text-ctp-subtext1 mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-ctp-surface0 border border-ctp-surface1 rounded-lg focus:outline-none focus:ring-2 focus:ring-ctp-blue focus:border-transparent" placeholder="Your message here..."></textarea>
+                </div>
+                <button type="submit" id="submit-btn" class="px-8 py-3 bg-ctp-blue text-ctp-crust rounded-full font-medium hover:bg-ctp-sapphire transition-colors">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-ctp-mantle py-12 px-6 border-t border-ctp-surface0">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-ctp-subtext0 mono">Built with ❤️ and Catppuccin</p>
+                    <p class="text-ctp-overlay1 text-sm mono">© <span id="currentYear"></span> Rexsy Bima TW. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://github.com/RexsyBima" class="text-ctp-subtext1 hover:text-ctp-blue">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rexsy-bima-613779148/" class="text-ctp-subtext1 hover:text-ctp-blue">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://dev.to/rexsy_bimatrimawahyu_d1" class="text-ctp-subtext1 hover:text-ctp-blue">
+                        <i class="fab fa-dev text-xl"></i>
+                    </a>
+                    <a href="mailto:rexsy.bimq12@gmail.com" class="text-ctp-subtext1 hover:text-ctp-blue">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('nav button');
+        const mobileMenuCloseButton = document.querySelector('#mobile-menu button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileMenuCloseButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Typewriter effect
+        const phrases = ["digital experiences", "backend apps", "RESTful APIs", "CLI tools"];
+        let currentPhrase = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+        const typewriterElement = document.querySelector('.typewriter');
+        
+        function typeWriter() {
+            const fullTxt = phrases[currentPhrase];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = fullTxt.substring(0, currentChar - 1);
+                currentChar--;
+            } else {
+                typewriterElement.textContent = fullTxt.substring(0, currentChar + 1);
+                currentChar++;
+            }
+            
+            if (!isDeleting && currentChar === fullTxt.length) {
+                isDeleting = true;
+                setTimeout(typeWriter, 2000);
+            } else if (isDeleting && currentChar === 0) {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                setTimeout(typeWriter, 500);
+            } else {
+                const speed = isDeleting ? 50 : 100;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        
+        // Start the typewriter effect after the initial animation completes
+        setTimeout(typeWriter, 3500);
+        // Function to update the year
+function updateCurrentYear() {
+    const yearSpan = document.getElementById('currentYear');
+    const currentYear = new Date().getFullYear();
+    yearSpan.textContent = currentYear;
+}
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', updateCurrentYear);
+    </script>
+</body>
+</html>

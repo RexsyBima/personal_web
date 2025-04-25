@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dotfiles Configuration | Terminal Setup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/caskaydia-cove/400.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Catppuccin Mocha palette
+                        'ctp-base': '#1e1e2e',
+                        'ctp-mantle': '#181825',
+                        'ctp-crust': '#11111b',
+                        'ctp-text': '#cdd6f4',
+                        'ctp-subtext1': '#bac2de',
+                        'ctp-subtext0': '#a6adc8',
+                        'ctp-overlay2': '#9399b2',
+                        'ctp-overlay1': '#7f849c',
+                        'ctp-overlay0': '#6c7086',
+                        'ctp-surface2': '#585b70',
+                        'ctp-surface1': '#45475a',
+                        'ctp-surface0': '#313244',
+                        'ctp-blue': '#89b4fa',
+                        'ctp-lavender': '#b4befe',
+                        'ctp-sapphire': '#74c7ec',
+                        'ctp-sky': '#89dceb',
+                        'ctp-teal': '#94e2d5',
+                        'ctp-green': '#a6e3a1',
+                        'ctp-yellow': '#f9e2af',
+                        'ctp-peach': '#fab387',
+                        'ctp-maroon': '#eba0ac',
+                        'ctp-red': '#f38ba8',
+                        'ctp-mauve': '#cba6f7',
+                        'ctp-pink': '#f5c2e7',
+                        'ctp-flamingo': '#f2cdcd',
+                        'ctp-rosewater': '#f5e0dc',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=CaskaydiaCove+Nerd+Font&display=swap');
+        
+        :root {
+            --ctp-mocha-rosewater: #f5e0dc;
+            --ctp-mocha-flamingo: #f2cdcd;
+            --ctp-mocha-pink: #f5c2e7;
+            --ctp-mocha-mauve: #cba6f7;
+            --ctp-mocha-red: #f38ba8;
+            --ctp-mocha-maroon: #eba0ac;
+            --ctp-mocha-peach: #fab387;
+            --ctp-mocha-yellow: #f9e2af;
+            --ctp-mocha-green: #a6e3a1;
+            --ctp-mocha-teal: #94e2d5;
+            --ctp-mocha-sky: #89dceb;
+            --ctp-mocha-sapphire: #74c7ec;
+            --ctp-mocha-blue: #89b4fa;
+            --ctp-mocha-lavender: #b4befe;
+            --ctp-mocha-text: #cdd6f4;
+            --ctp-mocha-subtext1: #bac2de;
+            --ctp-mocha-subtext0: #a6adc8;
+            --ctp-mocha-overlay2: #9399b2;
+            --ctp-mocha-overlay1: #7f849c;
+            --ctp-mocha-overlay0: #6c7086;
+            --ctp-mocha-surface2: #585b70;
+            --ctp-mocha-surface1: #45475a;
+            --ctp-mocha-surface0: #313244;
+            --ctp-mocha-base: #1e1e2e;
+            --ctp-mocha-mantle: #181825;
+            --ctp-mocha-crust: #11111b;
+        }
+        
+        body {
+            font-family: 'CaskaydiaCove Nerd Font', monospace;
+            background-color: var(--ctp-mocha-base);
+            color: var(--ctp-mocha-text);
+            line-height: 1.6;
+        }
+        
+        .font-nerd {
+            font-family: 'CaskaydiaCove Nerd Font', monospace;
+        }
+        
+        .prose {
+            max-width: 65ch;
+        }
+        
+        .prose h2 {
+            color: var(--ctp-mocha-blue);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .prose h3 {
+            color: var(--ctp-mocha-lavender);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        
+        .prose p {
+            margin-bottom: 1.25rem;
+            color: var(--ctp-mocha-subtext1);
+        }
+        
+        .prose a {
+            color: var(--ctp-mocha-sky);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--ctp-mocha-sky);
+        }
+        
+        .prose a:hover {
+            color: var(--ctp-mocha-blue);
+            border-bottom-style: solid;
+        }
+        
+        .prose code {
+            font-family: 'CaskaydiaCove Nerd Font', monospace;
+            background-color: var(--ctp-mocha-surface0);
+            color: var(--ctp-mocha-green);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.9em;
+        }
+        
+        .prose pre {
+            background-color: var(--ctp-mocha-crust);
+            color: var(--ctp-mocha-text);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--ctp-mocha-mauve);
+        }
+        
+        .prose pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            border-radius: 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--ctp-mocha-surface1);
+            color: var(--ctp-mocha-teal);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: var(--ctp-mocha-surface1);
+            margin: 2rem 0;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--ctp-mocha-surface0);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--ctp-mocha-overlay0);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--ctp-mocha-overlay1);
+        }
+        
+        /* Configuration card */
+        .config-card {
+            background: var(--ctp-mocha-surface0);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s;
+        }
+        
+        .config-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .config-card h3 {
+            color: var(--ctp-mocha-lavender);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .config-card p {
+            color: var(--ctp-mocha-subtext1);
+            margin-bottom: 0.75rem;
+        }
+        
+        .config-card .file-path {
+            font-family: 'CaskaydiaCove Nerd Font', monospace;
+            color: var(--ctp-mocha-green);
+            font-size: 0.85rem;
+        }
+
+
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1e1e2e;
+            color: #cdd6f4;
+            scroll-behavior: smooth;
+        }
+        
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #89b4fa, #cba6f7, #f5c2e7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-glass {
+            background: rgba(30, 30, 46, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(76, 79, 105, 0.3);
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #b4befe;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid #89b4fa;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #89b4fa }
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #1e1e2e, #181825);
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(203, 166, 247, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="fixed w-full z-50 bg-ctp-mantle/90 backdrop-blur-md border-b border-ctp-surface0">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold gradient-text">Rexsy</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="/projects" class="nav-link">Projects</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="/blogposts" class="nav-link">Blogposts</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="/dotfiles" class="nav-link">.dotfiles</a>
+                </div>
+                <button class="md:hidden text-ctp-blue focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Header -->
+        <header class="mb-8">
+            <nav class="flex justify-between items-center mb-6">
+                <a href="#" class="text-xl font-bold text-ctp-mocha-blue">
+                    <i class="fas fa-terminal mr-2"></i>Dotfiles Showcase
+                </a>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    <a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text">
+                        <i class="fas fa-rss"></i>
+                    </a>
+                </div>
+            </nav>
+        </header>
+        
+        <!-- Main Content -->
+        <main>
+            <header class="mb-8">
+                <div class="flex items-center mb-4">
+                    <span class="inline-block w-2 h-2 rounded-full bg-ctp-mocha-green mr-2"></span>
+                    <span class="text-sm text-ctp-mocha-subtext1">Developer Configuration</span>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">My Dotfiles Configuration</h1>
+                
+                <div class="flex items-center mb-6">
+                    <img src="https://i.pravatar.cc/40?img=11" alt="Author" class="rounded-full mr-3">
+                    <div>
+                        <p class="text-sm font-medium">Your Name</p>
+                        <p class="text-xs text-ctp-mocha-subtext0">Last updated: June 10, 2023</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap mb-6">
+                    <span class="tag"><i class="fas fa-terminal mr-1"></i>Terminal</span>
+                    <span class="tag"><i class="fas fa-code mr-1"></i>Editor</span>
+                    <span class="tag"><i class="fab fa-linux mr-1"></i>Linux</span>
+                    <span class="tag"><i class="fas fa-sliders-h mr-1"></i>Configuration</span>
+                </div>
+                
+                <div class="bg-ctp-mocha-surface0 rounded-lg p-4 mb-6">
+                    <p class="text-ctp-mocha-subtext1 italic">
+                        <i class="fas fa-quote-left text-ctp-mocha-overlay1 mr-2"></i>
+                        These are my carefully crafted dotfiles that configure my development environment exactly how I like it. Feel free to explore and borrow anything useful!
+                    </p>
+                </div>
+                
+                <div class="text-center mb-8">
+                    <a href="https://github.com/yourusername/dotfiles" class="inline-flex items-center px-6 py-3 rounded-lg bg-ctp-mocha-surface1 hover:bg-ctp-mocha-surface2 transition text-ctp-mocha-blue font-medium">
+                        <i class="fab fa-github mr-2 text-xl"></i>
+                        View on GitHub
+                    </a>
+                </div>
+            </header>
+            
+            <!-- Dotfiles Showcase -->
+            <div class="prose">
+                <h2>Configuration Highlights</h2>
+                <p>Here are some of the key components of my dotfiles setup. Each configuration is designed to work together to create a cohesive development environment.</p>
+                
+                <div class="config-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3>Terminal Setup</h3>
+                            <p>Alacritty terminal with Catppuccin Mocha theme and CaskaydiaCove Nerd Font</p>
+                            <div class="file-path">~/.config/alacritty/alacritty.yml</div>
+                        </div>
+                        <i class="fas fa-terminal text-ctp-mocha-mauve text-xl"></i>
+                    </div>
+                </div>
+                
+                <div class="config-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3>Shell Configuration</h3>
+                            <p>Zsh with Powerlevel10k prompt, custom aliases, and environment variables</p>
+                            <div class="file-path">~/.zshrc</div>
+                        </div>
+                        <i class="fas fa-code text-ctp-mocha-blue text-xl"></i>
+                    </div>
+                </div>
+                
+                <div class="config-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3>Neovim Setup</h3>
+                            <p>Fully configured Neovim with LSP, treesitter, and Catppuccin colorscheme</p>
+                            <div class="file-path">~/.config/nvim/init.lua</div>
+                        </div>
+                        <i class="fas fa-file-code text-ctp-mocha-green text-xl"></i>
+                    </div>
+                </div>
+                
+                <div class="config-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3>Tmux Configuration</h3>
+                            <p>Terminal multiplexer with status bar customization and keybindings</p>
+                            <div class="file-path">~/.tmux.conf</div>
+                        </div>
+                        <i class="fas fa-window-maximize text-ctp-mocha-peach text-xl"></i>
+                    </div>
+                </div>
+                
+                <div class="config-card">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3>Git Configuration</h3>
+                            <p>Custom git aliases, difftool/mergetool setup, and global ignores</p>
+                            <div class="file-path">~/.gitconfig</div>
+                        </div>
+                        <i class="fab fa-git-alt text-ctp-mocha-red text-xl"></i>
+                    </div>
+                </div>
+                
+                <h2>Installation</h2>
+                <p>To use these dotfiles, clone the repository and run the installation script:</p>
+                
+                <pre><code>git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./install.sh</code></pre>
+                
+                <p>The installation script will:</p>
+                <ul class="list-disc pl-5 mb-6 text-ctp-mocha-subtext1">
+                    <li class="mb-2">Create symlinks for all configuration files</li>
+                    <li class="mb-2">Install required dependencies (if specified)</li>
+                    <li class="mb-2">Set up plugin managers for various tools</li>
+                    <li>Apply the color scheme across all supported applications</li>
+                </ul>
+                
+                <div class="bg-ctp-mocha-surface1 rounded-lg p-4 my-6 border-l-4 border-ctp-mocha-blue">
+                    <div class="flex items-start">
+                        <i class="fas fa-lightbulb text-ctp-mocha-yellow mr-3 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-ctp-mocha-blue mb-2">Pro Tip</h4>
+                            <p class="text-ctp-mocha-subtext1">Before running the install script, back up your existing dotfiles. The script will prompt you before overwriting any existing configurations.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>Terminal Preview</h2>
+                <p>Here's what my terminal environment looks like with these configurations applied:</p>
+                
+                <div class="bg-ctp-mocha-surface0 rounded-lg p-4 my-6 overflow-x-auto">
+                    <div class="text-center mb-2 text-sm text-ctp-mocha-subtext0">Terminal Preview</div>
+                    <div class="bg-ctp-mocha-crust p-4 rounded font-mono text-sm">
+                        <div class="text-ctp-mocha-green">➜  <span class="text-ctp-mocha-blue">~</span></div>
+                        <div class="text-ctp-mocha-green">➜  <span class="text-ctp-mocha-blue">dotfiles</span> git:(<span class="text-ctp-mocha-mauve">main</span>)</div>
+                        <div class="text-ctp-mocha-green">➜  <span class="text-ctp-mocha-blue">dotfiles</span> ls -la</div>
+                        <div class="text-ctp-mocha-subtext1 ml-4">total 32</div>
+                        <div class="text-ctp-mocha-subtext1 ml-4">drwxr-xr-x  7 user user 4096 Jun 10 14:30 <span class="text-ctp-mocha-blue">.</span></div>
+                        <div class="text-ctp-mocha-subtext1 ml-4">drwxr-xr-x 12 user user 4096 Jun 10 14:28 <span class="text-ctp-mocha-blue">..</span></div>
+                        <div class="text-ctp-mocha-subtext1 ml-4">-rw-r--r--  1 user user  567 Jun 10 14:29 <span class="text-ctp-mocha-green">.gitconfig</span></div>
+                        <div class="text-ctp-mocha-subtext1 ml-4">-rw-r--r--  1 user user 1234 Jun 10 14:29 <span class="text-ctp-mocha-green">.tmux.conf</span></div>
+                        <div class="text-ctp-mocha-subtext1 ml-4">-rw-r--r--  1 user user 3456 Jun 10 14:29 <span class="text-ctp-mocha-green">.zshrc</span></div>
+                        <div class="text-ctp-mocha-subtext1 ml-4">drwxr-xr-x  3 user user 4096 Jun 10 14:29 <span class="text-ctp-mocha-blue">.config</span></div>
+                        <div class="text-ctp-mocha-green">➜  <span class="text-ctp-mocha-blue">dotfiles</span> <span class="text-ctp-mocha-subtext1"># Ready for development</span></div>
+                        <div class="text-right text-xs text-ctp-mocha-overlay1">14:30:42</div>
+                    </div>
+                </div>
+                
+                <h2>Customization</h2>
+                <p>These dotfiles are designed to be easily customizable. Here are some common modifications:</p>
+                
+                <h3>Changing the Color Scheme</h3>
+                <p>Edit the theme file to switch between Catppuccin variants (Latte, Frappé, Macchiato, Mocha):</p>
+                
+                <pre><code># In ~/.config/theme/colors.conf
+COLOR_SCHEME="mocha"  # Change to "latte", "frappe", or "macchiato"</code></pre>
+                
+                <h3>Adding New Aliases</h3>
+                <p>Add your custom shell aliases to the dedicated aliases file:</p>
+                
+                <pre><code># In ~/.config/shell/aliases.zsh
+alias mycmd="some complex command here"</code></pre>
+                
+                <div class="divider"></div>
+                
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <button class="px-4 py-2 rounded-md bg-ctp-mocha-surface1 hover:bg-ctp-mocha-surface2 transition">
+                            <i class="fas fa-heart mr-2 text-ctp-mocha-red"></i> Like
+                        </button>
+                        <button class="px-4 py-2 rounded-md bg-ctp-mocha-surface1 hover:bg-ctp-mocha-surface2 transition">
+                            <i class="fas fa-bookmark mr-2 text-ctp-mocha-yellow"></i> Save
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-ctp-mocha-subtext1">Share:</span>
+                        <a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-blue"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-red"><i class="fab fa-mastodon"></i></a>
+                        <a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-green"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+    </div>
+
+    <footer class="bg-ctp-mantle py-12 px-6 border-t border-ctp-surface0">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-ctp-subtext0 mono">Built with ❤️ and Catppuccin</p>
+                    <p class="text-ctp-overlay1 text-sm mono">© <span id="currentYear"></span> Rexsy Bima TW. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://github.com/RexsyBima" class="text-ctp-subtext1 hover:text-ctp-blue">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rexsy-bima-613779148/" class="text-ctp-subtext1 hover:text-ctp-blue">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://dev.to/rexsy_bimatrimawahyu_d1" class="text-ctp-subtext1 hover:text-ctp-blue">
+                        <i class="fab fa-dev text-xl"></i>
+                    </a>
+                    <a href="mailto:rexsy.bimq12@gmail.com" class="text-ctp-subtext1 hover:text-ctp-blue">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Font detection
+        document.addEventListener('DOMContentLoaded', () => {
+            const fontCheck = document.createElement('span');
+            fontCheck.style.fontFamily = 'CaskaydiaCove Nerd Font';
+            fontCheck.style.position = 'absolute';
+            fontCheck.style.visibility = 'hidden';
+            fontCheck.innerHTML = 'Hello';
+            document.body.appendChild(fontCheck);
+            
+            const originalWidth = fontCheck.getBoundingClientRect().width;
+            fontCheck.style.fontFamily = 'monospace';
+            const newWidth = fontCheck.getBoundingClientRect().width;
+            
+            if (originalWidth === newWidth) {
+                console.log('CaskaydiaCove Nerd Font not loaded, using fallback');
+                document.body.style.fontFamily = 'monospace';
+            }
+            document.body.removeChild(fontCheck);
+            
+            // Add copy button to code blocks
+            document.querySelectorAll('pre').forEach(pre => {
+                const button = document.createElement('button');
+                button.innerHTML = '<i class="far fa-copy"></i>';
+                button.className = 'absolute top-2 right-2 text-ctp-mocha-subtext1 hover:text-ctp-mocha-text';
+                button.addEventListener('click', () => {
+                    const code = pre.querySelector('code').innerText;
+                    navigator.clipboard.writeText(code).then(() => {
+                        button.innerHTML = '<i class="fas fa-check"></i>';
+                        setTimeout(() => {
+                            button.innerHTML = '<i class="far fa-copy"></i>';
+                        }, 2000);
+                    });
+                });
+                
+                pre.style.position = 'relative';
+                pre.appendChild(button);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+        // Function to update the year
+function updateCurrentYear() {
+    const yearSpan = document.getElementById('currentYear');
+    const currentYear = new Date().getFullYear();
+    yearSpan.textContent = currentYear;
+}
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', updateCurrentYear);
+    </script>
+</body>
+</html>

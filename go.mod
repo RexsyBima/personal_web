@@ -1,0 +1,3 @@
+module personal_web
+
+go 1.24.1

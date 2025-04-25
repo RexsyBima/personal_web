@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/caskaydia-cove@4.2.1/index.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
+        
+        :root {
+            --ctp-mocha-rosewater: #f5e0dc;
+            --ctp-mocha-flamingo: #f2cdcd;
+            --ctp-mocha-pink: #f5c2e7;
+            --ctp-mocha-mauve: #cba6f7;
+            --ctp-mocha-red: #f38ba8;
+            --ctp-mocha-maroon: #eba0ac;
+            --ctp-mocha-peach: #fab387;
+            --ctp-mocha-yellow: #f9e2af;
+            --ctp-mocha-green: #a6e3a1;
+            --ctp-mocha-teal: #94e2d5;
+            --ctp-mocha-sky: #89dceb;
+            --ctp-mocha-sapphire: #74c7ec;
+            --ctp-mocha-blue: #89b4fa;
+            --ctp-mocha-lavender: #b4befe;
+            --ctp-mocha-text: #cdd6f4;
+            --ctp-mocha-subtext1: #bac2de;
+            --ctp-mocha-subtext0: #a6adc8;
+            --ctp-mocha-overlay2: #9399b2;
+            --ctp-mocha-overlay1: #7f849c;
+            --ctp-mocha-overlay0: #6c7086;
+            --ctp-mocha-surface2: #585b70;
+            --ctp-mocha-surface1: #45475a;
+            --ctp-mocha-surface0: #313244;
+            --ctp-mocha-base: #1e1e2e;
+            --ctp-mocha-mantle: #181825;
+            --ctp-mocha-crust: #11111b;
+        }
+        
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: var(--ctp-mocha-base);
+            color: var(--ctp-mocha-text);
+        }
+        
+        .nerd-font {
+            font-family: 'CaskaydiaCove Nerd Font', monospace;
+        }
+        
+        .project-card {
+            background: linear-gradient(145deg, var(--ctp-mocha-surface0), var(--ctp-mocha-surface1));
+            border-left: 4px solid var(--ctp-mocha-mauve);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--ctp-mocha-blue);
+        }
+        
+        .tag {
+            background-color: var(--ctp-mocha-surface2);
+            color: var(--ctp-mocha-subtext1);
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 5px var(--ctp-mocha-lavender);
+        }
+        
+        .terminal-header {
+            background-color: var(--ctp-mocha-surface1);
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        
+        .terminal-body {
+            background-color: var(--ctp-mocha-crust);
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            font-family: 'CaskaydiaCove Nerd Font', monospace;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        
+        .dot-red { background-color: var(--ctp-mocha-red); }
+        .dot-yellow { background-color: var(--ctp-mocha-yellow); }
+        .dot-green { background-color: var(--ctp-mocha-green); }
+        
+        .command-line {
+            color: var(--ctp-mocha-green);
+        }
+        
+        .command {
+            color: var(--ctp-mocha-blue);
+        }
+        
+        .comment {
+            color: var(--ctp-mocha-overlay0);
+        }
+        
+        .blink {
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 glow-text" style="color: var(--ctp-mocha-mauve);">
+                <span class="nerd-font"></span> My Projects
+            </h1>
+            <p class="text-xl" style="color: var(--ctp-mocha-subtext1);">
+                A showcase of my work in beautiful <span style="color: var(--ctp-mocha-blue);">Catppuccin Mocha</span> style
+            </p>
+            <div class="mt-6 flex justify-center space-x-4">
+                <span class="tag px-3 py-1 rounded-full text-sm">JavaScript</span>
+                <span class="tag px-3 py-1 rounded-full text-sm">React</span>
+                <span class="tag px-3 py-1 rounded-full text-sm">Node.js</span>
+                <span class="tag px-3 py-1 rounded-full text-sm">TailwindCSS</span>
+            </div>
+        </header>
+        
+        <!-- Terminal-like section -->
+        <div class="mb-12">
+            <div class="terminal-header px-4 py-2 flex items-center">
+                <div class="flex mr-4">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="text-sm" style="color: var(--ctp-mocha-subtext1);">
+                    <span class="nerd-font"></span> projects-terminal --user=visitor
+                </div>
+            </div>
+            <div class="terminal-body p-4 md:p-6">
+                <div class="mb-2">
+                    <span class="command-line nerd-font"></span><span class="command-line"></span> <span class="command">ls</span> <span class="comment"># list all projects</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>  web-app</div>
+                    <div>  open-source-contrib</div>
+                    <div>  design-system</div>
+                    <div>  cli-tool</div>
+                    <div>  data-visualization</div>
+                    <div>  portfolio-v1</div>
+                </div>
+                <div class="mb-2">
+                    <span class="command-line nerd-font"></span><span class="command-line"></span> <span class="command">cat</span> README.md <span class="comment"># project details</span>
+                </div>
+                <div class="mb-2">
+                    <span style="color: var(--ctp-mocha-blue);"># My Projects</span>
+                </div>
+                <div class="mb-2">
+                    Welcome to my project showcase! Here you'll find a collection of my work.
+                </div>
+                <div class="mb-2">
+                    <span class="nerd-font"></span> Use the navigation below to explore each project in detail.
+                </div>
+                <div class="mt-4">
+                    <span class="command-line nerd-font"></span><span class="command-line"></span> <span class="blink">█</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Project 1 -->
+            <div class="project-card p-6 rounded-lg">
+                <div class="flex items-center mb-4">
+                    <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-blue);"></span>
+                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-blue);">E-commerce Platform</h3>
+                </div>
+                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
+                    A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include payment processing, inventory management, and admin dashboard.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 rounded text-xs">React</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Node.js</span>
+                    <span class="tag px-2 py-1 rounded text-xs">MongoDB</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Stripe API</span>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
+                        <span class="nerd-font mr-1"></span> View Live
+                    </a>
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
+                        <span class="nerd-font mr-1"></span> Source Code
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card p-6 rounded-lg">
+                <div class="flex items-center mb-4">
+                    <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-green);"></span>
+                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-green);">Open Source Contribution</h3>
+                </div>
+                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
+                    Contributed to several open source projects including VSCode extensions, documentation improvements, and bug fixes for popular JavaScript libraries.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 rounded text-xs">TypeScript</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Git</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Documentation</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Community</span>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
+                        <span class="nerd-font mr-1"></span> View PRs
+                    </a>
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
+                        <span class="nerd-font mr-1"></span> GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card p-6 rounded-lg">
+                <div class="flex items-center mb-4">
+                    <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-yellow);"></span>
+                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-yellow);">Design System</h3>
+                </div>
+                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
+                    Created a comprehensive design system with reusable components, accessibility guidelines, and theming support for a large-scale application.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 rounded text-xs">Storybook</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Figma</span>
+                    <span class="tag px-2 py-1 rounded text-xs">React</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Styled Components</span>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
+                        <span class="nerd-font mr-1"></span> View Demo
+                    </a>
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
+                        <span class="nerd-font mr-1"></span> Documentation
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="project-card p-6 rounded-lg">
+                <div class="flex items-center mb-4">
+                    <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-peach);"></span>
+                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-peach);">CLI Productivity Tool</h3>
+                </div>
+                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
+                    A command-line interface tool that automates repetitive development tasks with customizable workflows and plugins.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 rounded text-xs">Node.js</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Commander.js</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Inquirer.js</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Shell Scripting</span>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
+                        <span class="nerd-font mr-1"></span> View Demo
+                    </a>
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
+                        <span class="nerd-font mr-1"></span> NPM Package
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="project-card p-6 rounded-lg">
+                <div class="flex items-center mb-4">
+                    <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-teal);"></span>
+                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-teal);">Data Visualization Dashboard</h3>
+                </div>
+                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
+                    Interactive dashboard for analyzing large datasets with real-time updates, filtering, and export capabilities.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 rounded text-xs">D3.js</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Chart.js</span>
+                    <span class="tag px-2 py-1 rounded text-xs">WebSockets</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Python Backend</span>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
+                        <span class="nerd-font mr-1"></span> View Demo
+                    </a>
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
+                        <span class="nerd-font mr-1"></span> Case Study
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="project-card p-6 rounded-lg">
+                <div class="flex items-center mb-4">
+                    <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-pink);"></span>
+                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-pink);">Portfolio Website</h3>
+                </div>
+                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
+                    The very site you're viewing now! Built with a focus on performance, accessibility, and aesthetic design.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag px-2 py-1 rounded text-xs">HTML/CSS</span>
+                    <span class="tag px-2 py-1 rounded text-xs">JavaScript</span>
+                    <span class="tag px-2 py-1 rounded text-xs">TailwindCSS</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Responsive Design</span>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
+                        <span class="nerd-font mr-1"></span> You're Here!
+                    </a>
+                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
+                        <span class="nerd-font mr-1"></span> Source Code
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="mt-16 text-center" style="color: var(--ctp-mocha-overlay1);">
+            <div class="mb-4">
+                <span class="nerd-font text-xl"></span> <span class="nerd-font text-xl"></span> <span class="nerd-font text-xl"></span> <span class="nerd-font text-xl"></span>
+            </div>
+            <p class="text-sm">
+                Built with <span style="color: var(--ctp-mocha-red);">♥</span> and Catppuccin Mocha colors
+            </p>
+            <p class="text-xs mt-2">
+                <span class="nerd-font"></span> Last updated: <span id="current-date"></span>
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // Set current date
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', options);
+        
+        // Add some terminal-like interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalBody = document.querySelector('.terminal-body');
+            
+            // Simulate typing effect
+            setTimeout(() => {
+                const cursor = document.querySelector('.blink');
+                if (cursor) {
+                    cursor.insertAdjacentHTML('beforebegin', ' cat projects/*.md');
+                }
+            }, 2000);
+            
+            // Make project cards interactive
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (e.target.tagName !== 'A') {
+                        this.querySelector('a').click();
+                    }
+                });
+            });
+        });
+        // Function to update the year
+function updateCurrentYear() {
+    const yearSpan = document.getElementById('currentYear');
+    const currentYear = new Date().getFullYear();
+    yearSpan.textContent = currentYear;
+}
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', updateCurrentYear);
+    </script>
+</body>
+</html>

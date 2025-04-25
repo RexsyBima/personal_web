@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catppuccin Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/caskaydia-cove/400.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=CaskaydiaCove+Nerd+Font&display=swap');
+        
+        :root {
+            --ctp-mocha-rosewater: #f5e0dc;
+            --ctp-mocha-flamingo: #f2cdcd;
+            --ctp-mocha-pink: #f5c2e7;
+            --ctp-mocha-mauve: #cba6f7;
+            --ctp-mocha-red: #f38ba8;
+            --ctp-mocha-maroon: #eba0ac;
+            --ctp-mocha-peach: #fab387;
+            --ctp-mocha-yellow: #f9e2af;
+            --ctp-mocha-green: #a6e3a1;
+            --ctp-mocha-teal: #94e2d5;
+            --ctp-mocha-sky: #89dceb;
+            --ctp-mocha-sapphire: #74c7ec;
+            --ctp-mocha-blue: #89b4fa;
+            --ctp-mocha-lavender: #b4befe;
+            --ctp-mocha-text: #cdd6f4;
+            --ctp-mocha-subtext1: #bac2de;
+            --ctp-mocha-subtext0: #a6adc8;
+            --ctp-mocha-overlay2: #9399b2;
+            --ctp-mocha-overlay1: #7f849c;
+            --ctp-mocha-overlay0: #6c7086;
+            --ctp-mocha-surface2: #585b70;
+            --ctp-mocha-surface1: #45475a;
+            --ctp-mocha-surface0: #313244;
+            --ctp-mocha-base: #1e1e2e;
+            --ctp-mocha-mantle: #181825;
+            --ctp-mocha-crust: #11111b;
+        }
+        
+        body {
+            font-family: 'CaskaydiaCove Nerd Font', monospace;
+            background-color: var(--ctp-mocha-base);
+            color: var(--ctp-mocha-text);
+        }
+        
+        .font-nerd {
+            font-family: 'CaskaydiaCove Nerd Font', monospace;
+        }
+        
+        .post-card {
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--ctp-mocha-mauve);
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--ctp-mocha-blue);
+        }
+        
+        .tag {
+            transition: all 0.2s ease;
+        }
+        
+        .tag:hover {
+            transform: scale(1.05);
+        }
+        
+        .category-marker {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        
+        .pagination-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .pagination-btn:hover {
+            background-color: var(--ctp-mocha-surface1);
+        }
+        
+        .pagination-btn.active {
+            background-color: var(--ctp-mocha-blue);
+            color: var(--ctp-mocha-crust);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--ctp-mocha-surface0);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--ctp-mocha-overlay0);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--ctp-mocha-overlay1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="mb-12">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-4xl font-bold text-ctp-mocha-blue mb-2">Catppuccin Blog</h1>
+                    <p class="text-ctp-mocha-subtext1">Thoughts, ideas, and experiments with a latte flavor</p>
+                </div>
+                <div class="flex space-x-4">
+                    <button class="px-4 py-2 rounded-md bg-ctp-mocha-surface0 hover:bg-ctp-mocha-surface1 transition">
+                        <i class="fas fa-search mr-2"></i> Search
+                    </button>
+                    <button class="px-4 py-2 rounded-md bg-ctp-mocha-blue text-ctp-mocha-crust hover:bg-ctp-mocha-sapphire transition">
+                        <i class="fas fa-rss mr-2"></i> Subscribe
+                    </button>
+                </div>
+            </div>
+            
+            <nav class="mt-8 border-b border-ctp-mocha-surface0 pb-2">
+                <ul class="flex space-x-6">
+                    <li><a href="#" class="text-ctp-mocha-blue font-medium">All Posts</a></li>
+                    <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text">Development</a></li>
+                    <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text">Design</a></li>
+                    <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text">Linux</a></li>
+                    <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text">Productivity</a></li>
+                    <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text">Tutorials</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Main Content -->
+        <main>
+            <!-- Featured Post -->
+            <div class="mb-12 post-card bg-ctp-mocha-surface0 rounded-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-2/3 p-6 md:p-8">
+                        <div class="flex items-center mb-4">
+                            <span class="category-marker bg-ctp-mocha-pink"></span>
+                            <span class="text-sm text-ctp-mocha-subtext1">Featured Post</span>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4">Introducing Catppuccin UI: A Soothing Color Palette for Developers</h2>
+                        <p class="text-ctp-mocha-subtext1 mb-6">Discover how the Catppuccin color palette can transform your development environment into a more pleasant and eye-friendly workspace, reducing eye strain and improving focus during long coding sessions.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://i.pravatar.cc/40?img=5" alt="Author" class="rounded-full mr-3">
+                                <div>
+                                    <p class="text-sm font-medium">Isabella Latte</p>
+                                    <p class="text-xs text-ctp-mocha-subtext0">May 15, 2023 · 8 min read</p>
+                                </div>
+                            </div>
+                            <button class="px-4 py-2 rounded-md bg-ctp-mocha-blue text-ctp-mocha-crust hover:bg-ctp-mocha-sapphire transition">
+                                Read More <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 bg-ctp-mocha-surface1 flex items-center justify-center p-6">
+                        <div class="text-center">
+                            <i class="fas fa-star text-5xl text-ctp-mocha-yellow mb-4"></i>
+                            <p class="text-ctp-mocha-subtext1">Editor's Pick</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Blog Posts Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Post 1 -->
+                <div class="post-card bg-ctp-mocha-surface0 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="category-marker bg-ctp-mocha-green"></span>
+                        <span class="text-sm text-ctp-mocha-subtext1">Development</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Optimizing Vim with Catppuccin Colors</h3>
+                    <p class="text-ctp-mocha-subtext1 mb-4 text-sm">Learn how to configure Vim to use the Catppuccin palette for optimal syntax highlighting and reduced eye strain during late-night coding sessions.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-teal">Vim</span>
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-peach">Productivity</span>
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-lavender">Linux</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/30?img=10" alt="Author" class="rounded-full mr-2">
+                            <p class="text-xs text-ctp-mocha-subtext0">Marco Espresso</p>
+                        </div>
+                        <p class="text-xs text-ctp-mocha-overlay1">Jun 2, 2023</p>
+                    </div>
+                </div>
+                
+                <!-- Post 2 -->
+                <div class="post-card bg-ctp-mocha-surface0 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="category-marker bg-ctp-mocha-mauve"></span>
+                        <span class="text-sm text-ctp-mocha-subtext1">Design</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Creating Accessible Interfaces with Catppuccin</h3>
+                    <p class="text-ctp-mocha-subtext1 mb-4 text-sm">Explore how the Catppuccin color palette can be used to create beautiful yet accessible user interfaces that meet WCAG standards.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-pink">UI/UX</span>
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-blue">Accessibility</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/30?img=12" alt="Author" class="rounded-full mr-2">
+                            <p class="text-xs text-ctp-mocha-subtext0">Sophia Cream</p>
+                        </div>
+                        <p class="text-xs text-ctp-mocha-overlay1">May 28, 2023</p>
+                    </div>
+                </div>
+                
+                <!-- Post 3 -->
+                <div class="post-card bg-ctp-mocha-surface0 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="category-marker bg-ctp-mocha-sapphire"></span>
+                        <span class="text-sm text-ctp-mocha-subtext1">Tutorial</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Setting Up CaskaydiaCove Nerd Font in VS Code</h3>
+                    <p class="text-ctp-mocha-subtext1 mb-4 text-sm">A step-by-step guide to installing and configuring CaskaydiaCove Nerd Font in Visual Studio Code for better icon support and readability.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-red">VS Code</span>
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-yellow">Fonts</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/30?img=3" alt="Author" class="rounded-full mr-2">
+                            <p class="text-xs text-ctp-mocha-subtext0">Alex Brew</p>
+                        </div>
+                        <p class="text-xs text-ctp-mocha-overlay1">May 22, 2023</p>
+                    </div>
+                </div>
+                
+                <!-- Post 4 -->
+                <div class="post-card bg-ctp-mocha-surface0 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="category-marker bg-ctp-mocha-peach"></span>
+                        <span class="text-sm text-ctp-mocha-subtext1">Linux</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Catppuccin Themes for Popular Linux Terminals</h3>
+                    <p class="text-ctp-mocha-subtext1 mb-4 text-sm">Compare Catppuccin implementations across different Linux terminals including Kitty, Alacritty, and GNOME Terminal.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-maroon">Terminal</span>
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-green">Linux</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/30?img=7" alt="Author" class="rounded-full mr-2">
+                            <p class="text-xs text-ctp-mocha-subtext0">Ethan Mocha</p>
+                        </div>
+                        <p class="text-xs text-ctp-mocha-overlay1">May 18, 2023</p>
+                    </div>
+                </div>
+                
+                <!-- Post 5 -->
+                <div class="post-card bg-ctp-mocha-surface0 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="category-marker bg-ctp-mocha-red"></span>
+                        <span class="text-sm text-ctp-mocha-subtext1">Productivity</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Boosting Focus with Catppuccin Dark Mode</h3>
+                    <p class="text-ctp-mocha-subtext1 mb-4 text-sm">How switching to Catppuccin's dark theme helped our team reduce eye strain and increase productivity metrics by 23%.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-flamingo">Health</span>
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-sky">Workflow</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/30?img=15" alt="Author" class="rounded-full mr-2">
+                            <p class="text-xs text-ctp-mocha-subtext0">Olivia Froth</p>
+                        </div>
+                        <p class="text-xs text-ctp-mocha-overlay1">May 12, 2023</p>
+                    </div>
+                </div>
+                
+                <!-- Post 6 -->
+                <div class="post-card bg-ctp-mocha-surface0 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <span class="category-marker bg-ctp-mocha-teal"></span>
+                        <span class="text-sm text-ctp-mocha-subtext1">Development</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Catppuccin for Web Development: CSS Variables Guide</h3>
+                    <p class="text-ctp-mocha-subtext1 mb-4 text-sm">Implement Catppuccin in your web projects using CSS variables for easy theme switching and consistent styling across components.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-lavender">CSS</span>
+                        <span class="tag px-3 py-1 text-xs rounded-full bg-ctp-mocha-surface1 text-ctp-mocha-blue">Web</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/30?img=20" alt="Author" class="rounded-full mr-2">
+                            <p class="text-xs text-ctp-mocha-subtext0">Liam Foam</p>
+                        </div>
+                        <p class="text-xs text-ctp-mocha-overlay1">May 5, 2023</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="flex justify-center space-x-2 mb-12">
+                <button class="pagination-btn w-10 h-10 rounded-md flex items-center justify-center bg-ctp-mocha-surface0">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="pagination-btn active w-10 h-10 rounded-md flex items-center justify-center bg-ctp-mocha-surface0 font-medium">1</button>
+                <button class="pagination-btn w-10 h-10 rounded-md flex items-center justify-center bg-ctp-mocha-surface0">2</button>
+                <button class="pagination-btn w-10 h-10 rounded-md flex items-center justify-center bg-ctp-mocha-surface0">3</button>
+                <span class="flex items-center px-2">...</span>
+                <button class="pagination-btn w-10 h-10 rounded-md flex items-center justify-center bg-ctp-mocha-surface0">8</button>
+                <button class="pagination-btn w-10 h-10 rounded-md flex items-center justify-center bg-ctp-mocha-surface0">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </main>
+        
+        <!-- Newsletter -->
+        <div class="bg-ctp-mocha-surface0 rounded-lg p-8 mb-12">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-2/3 mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">Stay updated with the latest posts</h3>
+                    <p class="text-ctp-mocha-subtext1">Subscribe to our newsletter and never miss a new article about design, development, and productivity tips.</p>
+                </div>
+                <div class="md:w-1/3">
+                    <div class="flex">
+                        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-2 rounded-l-md bg-ctp-mocha-surface1 text-ctp-mocha-text focus:outline-none focus:ring-2 focus:ring-ctp-mocha-blue">
+                        <button class="px-4 py-2 rounded-r-md bg-ctp-mocha-blue text-ctp-mocha-crust hover:bg-ctp-mocha-sapphire transition">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="border-t border-ctp-mocha-surface0 pt-8 pb-12">
+            <div class="md:flex justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h4 class="text-lg font-bold mb-4">Catppuccin Blog</h4>
+                    <p class="text-ctp-mocha-subtext1 max-w-md">A blog dedicated to beautiful color schemes, efficient workflows, and creating pleasant developer experiences.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h5 class="font-medium mb-3">Explore</h5>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">All Posts</a></li>
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">Popular</a></li>
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">Topics</a></li>
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">Authors</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-medium mb-3">Categories</h5>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">Development</a></li>
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">Design</a></li>
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">Linux</a></li>
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">Productivity</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-medium mb-3">Connect</h5>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">Twitter</a></li>
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">GitHub</a></li>
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">Discord</a></li>
+                            <li><a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text text-sm">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-ctp-mocha-surface0 flex justify-between items-center">
+                <p class="text-sm text-ctp-mocha-subtext0">© 2023 Catppuccin Blog. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text"><i class="fab fa-github"></i></a>
+                    <a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="text-ctp-mocha-subtext1 hover:text-ctp-mocha-text"><i class="fab fa-mastodon"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple animation for post cards on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // Set initial state for animation
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Font check
+            const fontCheck = document.createElement('span');
+            fontCheck.style.fontFamily = 'CaskaydiaCove Nerd Font';
+            fontCheck.style.position = 'absolute';
+            fontCheck.style.visibility = 'hidden';
+            fontCheck.innerHTML = 'Hello';
+            document.body.appendChild(fontCheck);
+            
+            const originalWidth = fontCheck.getBoundingClientRect().width;
+            fontCheck.style.fontFamily = 'monospace';
+            const newWidth = fontCheck.getBoundingClientRect().width;
+            
+            if (originalWidth === newWidth) {
+                console.log('CaskaydiaCove Nerd Font not loaded, using fallback');
+                document.body.style.fontFamily = 'monospace';
+            }
+            document.body.removeChild(fontCheck);
+        });
+    </script>
+</body>
+</html>
