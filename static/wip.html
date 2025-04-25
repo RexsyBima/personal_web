@@ -3,13 +3,171 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <link href="css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work in Progress | Catppuccin Mocha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .catppuccin-bg {
+            background-color: #1e1e2e;
+        }
+
+        .catppuccin-text {
+            color: #cdd6f4;
+        }
+
+        .catppuccin-primary {
+            color: #89b4fa;
+        }
+
+        .catppuccin-secondary {
+            color: #cba6f7;
+        }
+
+        .catppuccin-accent {
+            color: #f5e0dc;
+        }
+
+        .catppuccin-surface {
+            background-color: #313244;
+        }
+
+        .catppuccin-card {
+            background-color: #45475a;
+        }
+
+        .progress-bar {
+            background-color: #585b70;
+        }
+
+        .progress-fill {
+            background-color: #a6e3a1;
+            width: 65%;
+        }
+    </style>
 </head>
 
-<body>
-    <h1>Work in progress</h1>
+<body class="catppuccin-bg catppuccin-text min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="max-w-3xl w-full text-center">
+        <!-- Header with animated icon -->
+        <div class="floating mb-8">
+            <i class="fas fa-tools text-6xl catppuccin-secondary"></i>
+            <i class="fas fa-cat text-4xl absolute -ml-6 mt-4 catppuccin-accent"></i>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 catppuccin-primary">
+            Under Construction
+        </h1>
+
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+            Our <span class="font-semibold catppuccin-secondary">baristas</span> are busy brewing something special!
+            This feature is currently in the works and will be served fresh soon.
+        </p>
+
+        <!-- Progress indicator -->
+        <div class="mb-10">
+            <div class="text-left mb-2 flex justify-between">
+                <span class="text-sm catppuccin-accent">Feature Progress</span>
+                <span class="text-sm catppuccin-accent">65%</span>
+            </div>
+            <div class="progress-bar h-3 rounded-full overflow-hidden">
+                <div class="progress-fill h-full rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- Feature teaser card -->
+        <div class="catppuccin-card p-6 rounded-xl mb-8 text-left max-w-2xl mx-auto">
+            <h3 class="text-xl font-semibold mb-3 catppuccin-primary">
+                <i class="fas fa-sparkles mr-2"></i> What to Expect
+            </h3>
+            <ul class="space-y-2">
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-sm catppuccin-secondary"></i>
+                    <span>A purr-fectly designed experience</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-sm catppuccin-secondary"></i>
+                    <span>Latte art-level attention to detail</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-sm catppuccin-secondary"></i>
+                    <span>All the cozy vibes of Catppuccin Mocha</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Animated floating elements -->
+    <div class="fixed bottom-0 left-0 w-full overflow-hidden h-20">
+        <div class="absolute -left-10 bottom-4">
+            <i class="fas fa-coffee text-2xl opacity-30 catppuccin-accent floating" style="animation-delay: 0s;"></i>
+        </div>
+        <div class="absolute left-1/4 bottom-6">
+            <i class="fas fa-mug-hot text-xl opacity-40 catppuccin-secondary floating" style="animation-delay: 1s;"></i>
+        </div>
+        <div class="absolute right-1/4 bottom-8">
+            <i class="fas fa-cookie text-xl opacity-40 catppuccin-accent floating" style="animation-delay: 2s;"></i>
+        </div>
+        <div class="absolute -right-10 bottom-5">
+            <i class="fas fa-whisk text-2xl opacity-30 catppuccin-secondary floating" style="animation-delay: 3s;"></i>
+        </div>
+    </div>
+
+    <script>
+        // Simple countdown timer (for demo purposes)
+        function updateCountdown() {
+            const daysElement = document.querySelector('div:nth-child(1) > div:nth-child(1)');
+            const hoursElement = document.querySelector('div:nth-child(2) > div:nth-child(1)');
+            const minutesElement = document.querySelector('div:nth-child(3) > div:nth-child(1)');
+
+            // This is just for demo - in a real scenario you'd calculate against a target date
+            let minutes = parseInt(minutesElement.textContent);
+            let hours = parseInt(hoursElement.textContent);
+            let days = parseInt(daysElement.textContent);
+
+            minutes--;
+
+            if (minutes < 0) {
+                minutes = 59;
+                hours--;
+
+                if (hours < 0) {
+                    hours = 23;
+                    days--;
+
+                    if (days < 0) {
+                        days = 0;
+                        hours = 0;
+                        minutes = 0;
+                    }
+                }
+            }
+
+            minutesElement.textContent = minutes.toString().padStart(2, '0');
+            hoursElement.textContent = hours.toString().padStart(2, '0');
+            daysElement.textContent = days.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 60000); // Update every minute
+    </script>
 </body>
 
 </html>
