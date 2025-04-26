@@ -317,12 +317,14 @@
                         class="command">ls</span> <span class="comment"># list all projects</span>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                    <div> web-app</div>
-                    <div> open-source-contrib</div>
-                    <div> design-system</div>
-                    <div> cli-tool</div>
-                    <div> data-visualization</div>
-                    <div> portfolio-v1</div>
+                    <div> simple http server starter</div>
+                    <div> fastapi htmx fullstack template</div>
+                    <!-- <div> fastAPI deepseek tokenizer</div> -->
+                    <div> fastAPI deepseek tokenizer</div>
+                    <!-- <div> design-system</div> -->
+                    <div> epub-parser-md-generator</div>
+                    <!-- <div> data-visualization</div> -->
+                    <!-- <div> portfolio-v1</div> -->
                 </div>
                 <div class="mb-2">
                     <span class="command-line nerd-font"></span><span class="command-line"></span> <span
@@ -334,9 +336,6 @@
                 <div class="mb-2">
                     Welcome to my project showcase! Here you'll find a collection of my work.
                 </div>
-                <div class="mb-2">
-                    <span class="nerd-font"></span> Use the navigation below to explore each project in detail.
-                </div>
                 <div class="mt-4">
                     <span class="command-line nerd-font"></span><span class="command-line"></span> <span
                         class="blink">█</span>
@@ -345,29 +344,28 @@
         </div>
 
         <!-- Projects Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             <!-- Project 1 -->
             <div class="project-card p-6 rounded-lg">
                 <div class="flex items-center mb-4">
                     <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-blue);"></span>
-                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-blue);">E-commerce Platform</h3>
+                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-blue);">
+                        fastapi-htmx-template
+                    </h3>
                 </div>
                 <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
-                    A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include payment
-                    processing, inventory management, and admin dashboard.
+                    A fastapi-htmx template for a fullstack development, uses Jinja2 templating engine
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 rounded text-xs">React</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Node.js</span>
-                    <span class="tag px-2 py-1 rounded text-xs">MongoDB</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Stripe API</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Python</span>
+                    <span class="tag px-2 py-1 rounded text-xs">fastAPI</span>
+                    <span class="tag px-2 py-1 rounded text-xs">htmx</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Jinja</span>
                 </div>
                 <div class="mt-4 flex justify-between items-center">
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
-                        <span class="nerd-font mr-1"></span> View Live
-                    </a>
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
-                        <span class="nerd-font mr-1"></span> Source Code
+                    <a href="https://github.com/RexsyBima/fastapi-htmx-fullstack-template"
+                        class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
+                        <span class="nerd-font mr-3"></span> View Repository
                     </a>
                 </div>
             </div>
@@ -376,107 +374,50 @@
             <div class="project-card p-6 rounded-lg">
                 <div class="flex items-center mb-4">
                     <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-green);"></span>
-                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-green);">Open Source Contribution
+                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-green);">fastAPI deepseek tokenizer
                     </h3>
                 </div>
-                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
-                    Contributed to several open source projects including VSCode extensions, documentation improvements,
-                    and bug fixes for popular JavaScript libraries.
-                </p>
+                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">simple http server to calculate the encoded
+                    token, featuring with transformers version, and the tokenizer library version</p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 rounded text-xs">TypeScript</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Git</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Documentation</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Community</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Python</span>
+                    <span class="tag px-2 py-1 rounded text-xs">fastAPI</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Deepseek</span>
                 </div>
                 <div class="mt-4 flex justify-between items-center">
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
-                        <span class="nerd-font mr-1"></span> View PRs
-                    </a>
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
-                        <span class="nerd-font mr-1"></span> GitHub
+                    <a href="https://github.com/RexsyBima/fastAPI-deepseek-tokenizer" class="text-sm flex items-center"
+                        style="color: var(--ctp-mocha-green);">
+                        <span class="nerd-font mr-3"></span> View Repository
                     </a>
                 </div>
             </div>
 
             <!-- Project 3 -->
-            <div class="project-card p-6 rounded-lg">
-                <div class="flex items-center mb-4">
-                    <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-yellow);"></span>
-                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-yellow);">Design System</h3>
-                </div>
-                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
-                    Created a comprehensive design system with reusable components, accessibility guidelines, and
-                    theming support for a large-scale application.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 rounded text-xs">Storybook</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Figma</span>
-                    <span class="tag px-2 py-1 rounded text-xs">React</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Styled Components</span>
-                </div>
-                <div class="mt-4 flex justify-between items-center">
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
-                        <span class="nerd-font mr-1"></span> View Demo
-                    </a>
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
-                        <span class="nerd-font mr-1"></span> Documentation
-                    </a>
-                </div>
-            </div>
 
             <!-- Project 4 -->
             <div class="project-card p-6 rounded-lg">
                 <div class="flex items-center mb-4">
                     <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-peach);"></span>
-                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-peach);">CLI Productivity Tool</h3>
+                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-peach);">epub-parser-md-generator
+                    </h3>
                 </div>
-                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
-                    A command-line interface tool that automates repetitive development tasks with customizable
-                    workflows and plugins.
-                </p>
+                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">a cli tool to generate markdown text from a
+                    epub book. Great if you want to do personal branding after reading a good epub book. Uses Deepseek
+                    API calling</p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 rounded text-xs">Node.js</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Commander.js</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Inquirer.js</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Shell Scripting</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Go</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Deepseek API</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Go-Colly</span>
                 </div>
                 <div class="mt-4 flex justify-between items-center">
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
-                        <span class="nerd-font mr-1"></span> View Demo
-                    </a>
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
-                        <span class="nerd-font mr-1"></span> NPM Package
+                    <a href="https://github.com/RexsyBima/cli-epub-parser-md-generator"
+                        class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
+                        <span class="nerd-font mr-3"></span> View Repository
                     </a>
                 </div>
             </div>
 
             <!-- Project 5 -->
-            <div class="project-card p-6 rounded-lg">
-                <div class="flex items-center mb-4">
-                    <span class="nerd-font text-2xl mr-3" style="color: var(--ctp-mocha-teal);"></span>
-                    <h3 class="text-xl font-semibold" style="color: var(--ctp-mocha-teal);">Data Visualization Dashboard
-                    </h3>
-                </div>
-                <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
-                    Interactive dashboard for analyzing large datasets with real-time updates, filtering, and export
-                    capabilities.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="tag px-2 py-1 rounded text-xs">D3.js</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Chart.js</span>
-                    <span class="tag px-2 py-1 rounded text-xs">WebSockets</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Python Backend</span>
-                </div>
-                <div class="mt-4 flex justify-between items-center">
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
-                        <span class="nerd-font mr-1"></span> View Demo
-                    </a>
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
-                        <span class="nerd-font mr-1"></span> Case Study
-                    </a>
-                </div>
-            </div>
 
             <!-- Project 6 -->
             <div class="project-card p-6 rounded-lg">
@@ -486,21 +427,20 @@
                 </div>
                 <p class="mb-4" style="color: var(--ctp-mocha-subtext1);">
                     The very site you're viewing now! Built with a focus on performance, accessibility, and aesthetic
-                    design.
+                    catppuccin design.
                 </p>
                 <div class="flex flex-wrap gap-2">
                     <span class="tag px-2 py-1 rounded text-xs">HTML/CSS</span>
                     <span class="tag px-2 py-1 rounded text-xs">JavaScript</span>
                     <span class="tag px-2 py-1 rounded text-xs">TailwindCSS</span>
-                    <span class="tag px-2 py-1 rounded text-xs">Responsive Design</span>
+                    <span class="tag px-2 py-1 rounded text-xs">Go</span>
                 </div>
                 <div class="mt-4 flex justify-between items-center">
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-green);">
-                        <span class="nerd-font mr-1"></span> You're Here!
+                    <a href="https://github.com/RexsyBima/personal_web" class="text-sm flex items-center"
+                        style="color: var(--ctp-mocha-green);">
+                        <span class="nerd-font mr-3"></span> View Repository
                     </a>
-                    <a href="#" class="text-sm flex items-center" style="color: var(--ctp-mocha-sapphire);">
-                        <span class="nerd-font mr-1"></span> Source Code
-                    </a>
+                    <!-- <div> fastAPI deepseek tokenizer</div> -->
                 </div>
             </div>
         </div>
