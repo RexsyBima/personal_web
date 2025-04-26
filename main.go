@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/joho/godotenv"
+	"gopkg.in/gomail.v2"
 	"log"
 	"net/http"
 	"os"
@@ -45,9 +47,26 @@ func submitEmailHandler(w http.ResponseWriter, r *http.Request) {
 `
 	w.Header().Set("Content-Type", "text/html")
 	w.Write([]byte(successHTML))
+	m := gomail.NewMessage()
+	m.SetHeader("From", email)
+	m.SetHeader("To", "rexsy.bimq12@gmail.com")
+	m.SetHeader("Cc", "rexsy.bimq12@gmail.com", "rexsy.bimq12@gmail.com")
+	m.SetHeader("Subject", subject)
+	m.SetBody("text", message)
+	d := gomail.NewDialer("smtp.gmail.com", 587, os.Getenv("email_name"), os.Getenv("app_mail_password"))
+	fmt.Println(os.Getenv("app_mail_password"))
+	if err := d.DialAndSend(m); err != nil {
+		log.Printf("Error sending email: %v", err)
+		return
+	}
+	// https://github.com/go-gomail/gomail
 }
 
 func main() {
+	if err := godotenv.Load(); err != nil {
+		panic(err)
+	}
+	fmt.Println(os.Getenv("app_mail_password"))
 	port := flag.String("port", "8080", "Port number")
 	fs := http.FileServer(http.Dir("./static/imgs"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
