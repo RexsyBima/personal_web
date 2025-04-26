@@ -64,7 +64,8 @@ func submitEmailHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	if err := godotenv.Load(); err != nil {
-		panic(err)
+		fmt.Println(err)
+		fmt.Println("it must be deployed in server")
 	}
 	fmt.Println(os.Getenv("app_mail_password"))
 	port := flag.String("port", "8080", "Port number")
