@@ -49,6 +49,8 @@ func submitEmailHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	port := flag.String("port", "8080", "Port number")
+	fs := http.FileServer(http.Dir("./static/imgs"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	// CaskaydiaCove Nerd Font
 	flag.Parse()
 	// Directory you want to serve
