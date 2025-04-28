@@ -79,6 +79,7 @@ func main() {
 	http.Handle("/blogposts", serveHTML("wip.html"))
 	http.Handle("/dotfiles", serveHTML("dotfiles.html"))
 	http.Handle("/projects", serveHTML("projects.html"))
+	http.Handle("/about-me", serveHTML("about_me.html"))
 	http.HandleFunc("/submit", submitEmailHandler)
 	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {

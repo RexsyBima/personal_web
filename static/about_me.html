@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Catppuccin Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Catppuccin Mocha palette
+                        catpink: '#f5c2e7',
+                        catmauve: '#cba6f7',
+                        catred: '#f38ba8',
+                        catpeach: '#fab387',
+                        catyellow: '#f9e2af',
+                        catgreen: '#a6e3a1',
+                        catteal: '#94e2d5',
+                        catsky: '#89dceb',
+                        catsapphire: '#74c7ec',
+                        catblue: '#89b4fa',
+                        catlavender: '#b4befe',
+                        cattext: '#cdd6f4',
+                        catsubtext1: '#bac2de',
+                        catsubtext0: '#a6adc8',
+                        coverlay2: '#9399b2',
+                        coverlay1: '#7f849c',
+                        coverlay0: '#6c7086',
+                        catsurface2: '#585b70',
+                        catsurface1: '#45475a',
+                        catsurface0: '#313244',
+                        catbase: '#1e1e2e',
+                        catmantle: '#181825',
+                        catcrust: '#11111b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+
+        .icons {
+            font-size: 25px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1e1e2e;
+            color: #cdd6f4;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #f5c2e7, #89b4fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-image {
+            border: 3px solid #89b4fa;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-catbase">
+    <nav class="w-full z-50 bg-ctp-mantle/90 backdrop-blur-md border-b border-ctp-surface0">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold gradient-text">Rexsy</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="/projects" class="nav-link">Projects</a>
+                    <a href="/#skills" class="nav-link">Skills</a>
+                    <a href="/blogposts" class="nav-link">Blogposts</a>
+                    <a href="/dotfiles" class="nav-link">.dotfiles</a>
+                </div>
+                <button class="md:hidden text-ctp-blue focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-12 max-w-6xl">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-center mb-16">
+            <div class="mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold gradient-text">About Me</h1>
+                <p class="text-catsubtext1 mt-2">Exploring the world one line of code at a time</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <!-- Profile Section -->
+            <div class="lg:col-span-2">
+                <div class="bg-catsurface0 rounded-2xl p-8 shadow-lg">
+                    <h2 class="text-2xl font-bold text-cattext mb-6">Hello, I'm <span class="text-catblue">Rexsy</span>
+                        👋</h2>
+                    <p class="text-catsubtext1 mb-6 leading-relaxed">
+                        A versatile engineer and AI enthusiast with a strong foundation in data scraping, machine
+                        learning, and prompt engineering, complemented by a unique academic background in International
+                        Relations (GPA: 3.82). Experienced in mentoring learners, building AI-integrated applications,
+                        and delivering technical talks at industry events like Pycon Indonesia 2024. Passionate about
+                        leveraging technology to solve real-world problems, while bridging interdisciplinary fields such
+                        as AI, diplomacy, and environmental sustainability.
+                    </p>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="mt-12">
+                    <h3 class="text-xl font-bold text-cattext mb-6">My Work Experiences</h3>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="mt-12 bg-catsurface0 rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-xl font-bold text-cattext mb-6">Professional Experience</h3>
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-lg font-semibold text-catblue">Senior Frontend Developer</h4>
+                                <span class="text-catsubtext0 text-sm">2021 - Present</span>
+                            </div>
+                            <p class="text-catsubtext1 italic">Tech Solutions Inc.</p>
+                            <p class="text-catsubtext1 mt-2">
+                                Leading a team of developers to build responsive web applications using React and
+                                TypeScript.
+                                Implemented design systems and improved performance by 40%.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-lg font-semibold text-catblue">UI/UX Designer</h4>
+                                <span class="text-catsubtext0 text-sm">2018 - 2021</span>
+                            </div>
+                            <p class="text-catsubtext1 italic">Creative Digital Agency</p>
+                            <p class="text-catsubtext1 mt-2">
+                                Designed user interfaces for mobile and web applications, conducted user research,
+                                and created design systems for consistent brand experiences.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-catsurface0 rounded-2xl p-8 shadow-lg sticky top-8">
+                    <div class="flex flex-col items-center">
+                        <img src="/static/pas-foto.jpg" alt="Profile Picture"
+                            class="w-40 h-40 rounded-full object-cover profile-image mb-6">
+                        <h3 class="text-xl font-bold text-cattext">Rexsy Bima Trima Wahyu</h3>
+                        <p class="text-catsubtext1 mb-6">Full Stack Engineer</p>
+
+                        <div class="w-full bg-catsurface1 h-px my-4"></div>
+
+                        <div class="w-full">
+                            <h4 class="font-semibold text-cattext mb-4">Contact Info</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-catblue mr-3"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="text-catsubtext1">Rexsy.Bimq12@gmail.com</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-catblue mr-3"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    <span class="text-catsubtext1">Purwokerto, Indonesia</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full bg-catsurface1 h-px my-6"></div>
+
+                        <div class="w-full">
+                            <h4 class="font-semibold text-cattext mb-4">Connect With Me</h4>
+                            <div class="flex justify-center space-x-4">
+                                <a href="https://medium.com/@rexsy.bimq12"
+                                    class="social-icon text-cattext hover:text-catblue">
+                                    <i class="fa-brands fa-medium icons"></i>
+                                </a>
+                                <a href="https://github.com/RexsyBima"
+                                    class="social-icon text-cattext hover:text-catblue">
+                                    <i class="fa-brands fa-github icons"></i>
+                                </a>
+                                <a href="https://dev.to/rexsy_bimatrimawahyu_d1"
+                                    class="social-icon text-cattext hover:text-catblue">
+                                    <i class="fa-brands fa-dev icons"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/rexsy-bima-613779148/"
+                                    class="social-icon text-cattext hover:text-catblue">
+                                    <i class="fa-brands fa-linkedin icons"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="w-full bg-catsurface1 h-px my-6"></div>
+
+                        <a href="#"
+                            class="w-full bg-catblue hover:bg-catsapphire text-catbase font-medium py-3 px-6 rounded-lg text-center transition-colors">
+                            Download Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-16 text-center text-catsubtext0">
+            <p>© 2023 Your Name. All rights reserved.</p>
+            <p class="mt-2 text-sm">Made with <span class="text-catred">♥</span> and Catppuccin colors</p>
+        </footer>
+    </div>
+</body>
+
+</html>
